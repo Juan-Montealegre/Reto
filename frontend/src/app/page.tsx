@@ -42,7 +42,7 @@ export default function Home() {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`http://localhost:3001/user/${username}`);
+      const res = await fetch(`/api/user/${username}`);
       if (!res.ok) {
         if (res.status === 404) {
           throw new Error(`Usuario "${username}" no encontrado.`);
