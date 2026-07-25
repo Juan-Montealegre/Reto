@@ -35,14 +35,14 @@ __decorate([
     __metadata("design:returntype", String)
 ], AppController.prototype, "getHello", null);
 __decorate([
-    (0, common_1.Get)('user/:username'),
+    (0, common_1.Get)(['user/:username', 'api/user/:username']),
     __param(0, (0, common_1.Param)('username')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], AppController.prototype, "getGitHubProfile", null);
 exports.AppController = AppController = __decorate([
-    (0, common_1.Controller)('api'),
+    (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService])
 ], AppController);
 //# sourceMappingURL=app.controller.js.map

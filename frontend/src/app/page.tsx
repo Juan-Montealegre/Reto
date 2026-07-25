@@ -44,10 +44,17 @@ export default function Home() {
     try {
       const res = await fetch(`/api/user/${username}`);
       if (!res.ok) {
-        if (res.status === 404) {
-          throw new Error(`Usuario "${username}" no encontrado.`);
+        let errorMsg = 'Ocurrió un error al obtener el perfil.';
+        try {
+          const errData = await res.json();
+          if (errData.message) {
+            errorMsg = Array.isArray(errData.message) ? errData.message.join(', ') : errData.message;
+          }
+        } catch (_) {}
+        if (res.status === 404 && errorMsg === 'Ocurrió un error al obtener el perfil.') {
+          errorMsg = `Usuario "${username}" no encontrado.`;
         }
-        throw new Error('Ocurrió un error al obtener el perfil.');
+        throw new Error(errorMsg);
       }
       const data = await res.json();
       setProfile(data);

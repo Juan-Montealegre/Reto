@@ -1,7 +1,7 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller('api')
+@Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -10,7 +10,7 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('user/:username')
+  @Get(['user/:username', 'api/user/:username'])
   async getGitHubProfile(@Param('username') username: string) {
     return this.appService.getGitHubProfile(username);
   }
