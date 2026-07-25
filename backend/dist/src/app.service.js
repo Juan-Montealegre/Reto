@@ -18,11 +18,13 @@ let AppService = class AppService {
                 fetch(`https://api.github.com/users/${username}`, {
                     headers: {
                         'User-Agent': 'NestJS-GitHub-Profile-Viewer',
+                        'Accept': 'application/vnd.github.v3+json',
                     },
                 }),
                 fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`, {
                     headers: {
                         'User-Agent': 'NestJS-GitHub-Profile-Viewer',
+                        'Accept': 'application/vnd.github.v3+json',
                     },
                 }),
             ]);
