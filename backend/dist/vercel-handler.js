@@ -14,6 +14,7 @@ async function handler(req, res) {
         const expressApp = (0, express_1.default)();
         const adapter = new platform_express_1.ExpressAdapter(expressApp);
         const app = await core_1.NestFactory.create(app_module_1.AppModule, adapter);
+        app.enableCors();
         await app.init();
         cachedServer = expressApp;
     }
